@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import AppBar from 'src/components/AppBar';
 
 const Home = () => (
   <div>
@@ -7,9 +8,7 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main>
-      Rest countries api
-    </main>
+    <AppBar />
   </div>
 )
 
