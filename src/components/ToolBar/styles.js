@@ -9,4 +9,5 @@ export const Container = styled.div`
 export const Title = styled.h1`
     font-size: 1rem;
     font-weight: bold;
+    color: ${props => props.theme.text};
 `;
