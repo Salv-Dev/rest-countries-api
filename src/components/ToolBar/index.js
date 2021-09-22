@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Title } from './styles';
 
-function ToolBar() {
+function ToolBar({ title, children }) {
   return (
-      <Container></Container>
+      <Container>
+        {title && <Title>{title}</Title>}
+        {children}
+      </Container>
   );
 }
 
