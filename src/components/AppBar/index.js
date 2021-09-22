@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Container } from './styles';
 
-function AppBar() {
+function AppBar({ children }) {
   return (
     <Container>
-      
+      {children}
     </Container>
   );
 }

@@ -1,3 +1,4 @@
+import ToolBar from '@/components/ToolBar';
 import Head from 'next/head';
 import AppBar from 'src/components/AppBar';
 
@@ -8,7 +9,11 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <AppBar />
+    <AppBar>
+      <ToolBar title="Where in the world?">
+        
+      </ToolBar>
+    </AppBar>
   </div>
 )
 
