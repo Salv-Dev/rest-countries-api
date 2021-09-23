@@ -8,7 +8,8 @@ export const Container = styled.button`
     gap: 10px;
     border: none;
     color: ${props => props.theme.text};
-    background-color: ${props => props.theme.element};
+    opacity: ${props => props.disabled ? 0.2 : 1};
+    background-color: ${props => props.disabled ? 'rgba(0, 0, 0, 0%)' : props.theme.element};
     box-shadow: ${props => props.variant == 'shaded' ? '0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1)':'none'};
     transition: all .2s ease-in-out;
     cursor: pointer;
