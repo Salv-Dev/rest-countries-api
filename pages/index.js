@@ -1,4 +1,5 @@
 import Header from '@/components/containers/Header';
+import Box from '@/components/ui/Box';
 import Head from 'next/head';
 
 const Home = ({ setIsDarkMode, isDarkMode }) => (
@@ -9,6 +10,9 @@ const Home = ({ setIsDarkMode, isDarkMode }) => (
     </Head>
 
     <Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
+    <main>
+      <Box></Box>
+    </main>
   </div>
 )
 
