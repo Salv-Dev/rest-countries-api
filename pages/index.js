@@ -1,7 +1,7 @@
-import Button from '@/components/Button';
-import ToolBar from '@/components/ToolBar';
+import Button from '@/components/ui/Button';
+import ToolBar from '@/components/ui/ToolBar';
 import Head from 'next/head';
-import AppBar from 'src/components/AppBar';
+import AppBar from '@/components/ui/AppBar';
 import { IoMoonOutline } from 'react-icons/io5';
 import { IoSunnyOutline } from 'react-icons/io5';
 
