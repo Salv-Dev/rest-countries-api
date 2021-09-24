@@ -45,6 +45,7 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
 
         <TextField 
           placeholder="Filter by Region"
+          label="select"
           select
         />
       </Box>

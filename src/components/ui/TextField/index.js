@@ -1,15 +1,20 @@
-import React, { forwardRef } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { IoClose } from 'react-icons/io5';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Button from '../Button';
 
-import { Container, Input, Start, End } from './styles';
+import { Container, Input, Start, End, Select, Paragraph } from './styles';
 
-const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select }, ref) => {
-
+const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select, label }, ref) => {
+  const [selectOpen, setSelectOpen] = useState(false);
+  
   return (
-      <Container>
+      <Container select={select}>
           {select ? 
-            <div />
+            <Select aria-label={label} onClick={() => setSelectOpen(prev => !prev)}>
+                <Paragraph>{placeholder}</Paragraph>
+                {selectOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            </Select>
           :
             <>
                 {startAdornment && <Start>{startAdornment}</Start>}
