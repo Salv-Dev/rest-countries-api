@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Container, Text } from './styles';
+import { Container } from './styles';
 
-function Button({ children, startIcon, endIcon, variant, disabled, onClick }) {
+function Button({ children, startIcon, endIcon, variant, disabled, onClick, dense, fullWidth }) {
   return (
-      <Container data-testid="btn" variant={variant} onClick={onClick} disabled={disabled}>
+      <Container data-testid="btn" variant={variant} dense={dense} fullWidth={fullWidth} onClick={onClick} disabled={disabled}>
           {startIcon && startIcon}
-          <Text>{children}</Text>
+          {children}
           {endIcon && endIcon}
       </Container>
   );
