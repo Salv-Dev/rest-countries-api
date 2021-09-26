@@ -3,17 +3,46 @@ import { IoClose } from 'react-icons/io5';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Button from '../Button';
 
-import { Container, Input, Start, End, Select, Paragraph } from './styles';
+import { Container, Input, Start, End, Select, Paragraph, MenuItem, Item } from './styles';
 
-const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select, label }, ref) => {
+const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select, label, selectOptions }, ref) => {
   const [selectOpen, setSelectOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  console.log(selectedOption);
+
+  const changeSelectedOption = (e) => {
+    onChange(e)
+    setSelectedOption(e.target.innerHTML);
+  }
   
   return (
       <Container select={select}>
           {select ? 
             <Select aria-label={label} onClick={() => setSelectOpen(prev => !prev)}>
-                <Paragraph>{placeholder}</Paragraph>
-                {selectOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                <Paragraph>
+                  {selectedOption ? selectedOption : placeholder}
+                </Paragraph>
+                {selectOpen ?
+                  <> 
+                    <IoIosArrowUp />
+                    <MenuItem>
+                      {selectOptions ?
+                      <>
+                        {selectOptions.map((item, index)=> (
+                          <Item
+                            key={index}
+                            onClick={changeSelectedOption}  
+                          >{item}</Item>
+                        ))}
+                      </>
+                      :
+                      <Item empty>Vazio</Item>
+                      }
+                    </MenuItem>
+                  </>
+                  :
+                  <IoIosArrowDown />
+                }
             </Select>
           :
             <>

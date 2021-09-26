@@ -6,9 +6,20 @@ import Button from '@/components/ui/Button';
 import { IoMdSearch } from 'react-icons/io'
 import Head from 'next/head';
 
+const selectOptions = [
+  "Africa",
+  "América",
+  "Asia",
+  "Europa",
+  "Oceania"
+]
+
 const Home = ({ setIsDarkMode, isDarkMode }) => {
   const [inputValue, setInputValue] = useState("");
+  const [selectedOption, setSelectedOption] = useState('');
   const inputRef = useRef();
+
+  console.log(selectedOption);
 
   const changeInputTextValue = (e) => {
     setInputValue(e.target.value);
@@ -17,6 +28,10 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
   const cleanInputTextValue = () => {
     setInputValue("");
     inputRef.current.focus();  
+  }
+
+  const changeSelectedOption = (e) => {
+    setSelectedOption(e.target.innerHTML);
   }
 
   return (
@@ -47,6 +62,8 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
           placeholder="Filter by Region"
           label="select"
           select
+          selectOptions={selectOptions}
+          onChange={changeSelectedOption}
         />
       </Box>
     </main>
