@@ -7,20 +7,17 @@ import { Container, Input, Start, End, Select, Paragraph, MenuItem, Item } from 
 
 const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select, label, selectOptions }, ref) => {
   const [selectOpen, setSelectOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
-  console.log(selectedOption);
 
-  const changeSelectedOption = (e) => {
-    onChange(e)
-    setSelectedOption(e.target.innerHTML);
+  const clickSelectField = () => {
+    setSelectOpen(prev => !prev);
   }
   
   return (
-      <Container select={select}>
+      <Container data-testid="textField" select={select}>
           {select ? 
-            <Select aria-label={label} onClick={() => setSelectOpen(prev => !prev)}>
+            <Select aria-label={label} onClick={clickSelectField}>
                 <Paragraph>
-                  {selectedOption ? selectedOption : placeholder}
+                  {value ? value : placeholder}
                 </Paragraph>
                 {selectOpen ?
                   <> 
@@ -31,7 +28,7 @@ const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, o
                         {selectOptions.map((item, index)=> (
                           <Item
                             key={index}
-                            onClick={changeSelectedOption}  
+                            onClick={onChange}  
                           >{item}</Item>
                         ))}
                       </>
@@ -63,4 +60,4 @@ const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, o
   );
 })
 
-export default TextField;
+export default React.memo(TextField);

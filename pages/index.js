@@ -19,8 +19,6 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const inputRef = useRef();
 
-  console.log(selectedOption);
-
   const changeInputTextValue = (e) => {
     setInputValue(e.target.value);
   }
@@ -62,6 +60,7 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
           placeholder="Filter by Region"
           label="select"
           select
+          value={selectedOption}
           selectOptions={selectOptions}
           onChange={changeSelectedOption}
         />
