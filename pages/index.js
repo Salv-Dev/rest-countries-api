@@ -1,10 +1,7 @@
 import { useState, useRef } from 'react';
 import Header from '@/components/containers/Header';
-import Box from '@/components/ui/Box';
-import TextField from '@/components/ui/TextField';
-import Button from '@/components/ui/Button';
-import { IoMdSearch } from 'react-icons/io'
 import Head from 'next/head';
+import SearchBox from '@/components/containers/SearchBox';
 
 const selectOptions = [
   "Africa",
@@ -41,30 +38,15 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
 
     <Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
     <main>
-      <Box style={{ margin: '20px' }}>
-        <TextField 
-          startAdornment={
-            <Button dense >
-              <IoMdSearch size={22}/>
-            </Button>
-          }
-          ref={inputRef}
-          placeholder="Search for a country..."
-          value={inputValue}
-          onChange={changeInputTextValue}
-          cleanerButton
-          onClean={cleanInputTextValue}
-        />
-
-        <TextField 
-          placeholder="Filter by Region"
-          label="select"
-          select
-          value={selectedOption}
-          selectOptions={selectOptions}
-          onChange={changeSelectedOption}
-        />
-      </Box>
+      <SearchBox 
+        inputRef={inputRef}
+        inputValue={inputValue}
+        selectedOption={selectedOption}
+        selectOptions={selectOptions}
+        changeInputTextValue={changeInputTextValue}
+        cleanInputTextValue={cleanInputTextValue}
+        changeSelectedOption={changeSelectedOption}
+      />
     </main>
   </div>
 )}
