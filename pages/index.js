@@ -4,6 +4,7 @@ import Head from 'next/head';
 import SearchBox from '@/components/containers/SearchBox';
 import Card from '@/components/ui/Card';
 import Box from '@/components/ui/Box';
+import CardMedia from '@/components/ui/CardMedia';
 
 const selectOptions = [
   "Africa",
@@ -49,8 +50,16 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
         cleanInputTextValue={cleanInputTextValue}
         changeSelectedOption={changeSelectedOption}
       />
-      <Box style={{ margin: '20px 50px' }}>
-        <Card></Card>
+      <Box 
+        style={{ margin: '20px', alignItems: 'center' }}
+      >
+        <Card>
+          <CardMedia
+            component="img"
+            image="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/2-bandeira-do-brasil.jpg"
+            alt="brasil"
+          />
+        </Card>
       </Box>
     </main>
   </div>
