@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useRef, useEffect } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Button from '../Button';
@@ -7,15 +7,30 @@ import { Container, Input, Start, End, Select, Paragraph, MenuItem, Item } from 
 
 const TextField = forwardRef(({ startAdornment, endAdornment, value, onChange, onClean, cleanerButton, placeholder, type, select, label, selectOptions }, ref) => {
   const [selectOpen, setSelectOpen] = useState(false);
+  const selectMenuRef = useRef();
 
+  
   const clickSelectField = () => {
     setSelectOpen(prev => !prev);
   }
   
+  const handleClickOutside = (e) => {
+    if (selectMenuRef.current && !selectMenuRef.current.contains(e.target)) {
+      setSelectOpen(false);
+    }
+  }
+  
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, {capture: true});
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    }
+  }, [selectMenuRef]);
+
   return (
       <Container data-testid="textField" select={select}>
           {select ? 
-            <Select aria-label={label} onClick={clickSelectField}>
+            <Select aria-label={label} onClick={clickSelectField} ref={selectMenuRef}>
                 <Paragraph>
                   {value ? value : placeholder}
                 </Paragraph>

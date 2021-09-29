@@ -6,7 +6,7 @@ import { IoMdSearch } from 'react-icons/io'
 
 function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputValue, selectedOption, selectOptions,  changeSelectedOption}) {
   return (
-    <Box style={{ margin: '20px' }}>
+    <Box style={{ margin: '20px', gap: '10px' }}>
         <TextField 
         startAdornment={
             <Button dense >
