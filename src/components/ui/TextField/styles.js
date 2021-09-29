@@ -5,11 +5,12 @@ export const Container = styled.div`
     position: relative;
     width: ${props => props.select ? '200px' : '100%'};
     min-height: 50px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     background-color: ${props => props.theme.element};
     box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
     border-radius: 5px;
     cursor: ${props => props.select ? 'pointer' : ''};
+    transition: all 0.2s ease-in-out;
 
     @media(min-width: 600px) {
         width: ${props => props.select ? '200px' : '400px'};

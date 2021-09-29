@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import Header from '@/components/containers/Header';
 import Head from 'next/head';
 import SearchBox from '@/components/containers/SearchBox';
+import Card from '@/components/ui/Card';
+import Box from '@/components/ui/Box';
 
 const selectOptions = [
   "Africa",
@@ -47,6 +49,9 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
         cleanInputTextValue={cleanInputTextValue}
         changeSelectedOption={changeSelectedOption}
       />
+      <Box style={{ margin: '20px 50px' }}>
+        <Card></Card>
+      </Box>
     </main>
   </div>
 )}
