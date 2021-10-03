@@ -7,4 +7,5 @@ export const Container = styled.div`
     background-color: ${props => props.theme.element};
     box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
     border-radius: 5px;
+    cursor: ${props => props.onClick ? 'pointer' : ''};
 `;
