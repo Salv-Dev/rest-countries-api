@@ -7,8 +7,8 @@ export const Container = styled.div`
     gap: 40px;
 
     @media(min-width: 600px) {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: ${props => props.keepDirection ? 'column' : 'row'};
+        flex-wrap: ${props => props.noWrap ? 'nowrap' : 'wrap'};
         align-items: flex-start;
     }
 `;
