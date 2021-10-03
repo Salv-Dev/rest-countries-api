@@ -11,7 +11,7 @@ export const Container = styled.button`
     opacity: ${props => props.disabled ? 0.2 : 1};
     background-color: ${props => props.disabled ? 'rgba(0, 0, 0, 0%)' : props.theme.element};
     box-shadow: ${props => props.variant == 'shaded' ? '0 3px 6px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1)':'none'};
-    border-radius: ${props => props.variant == 'rounded' ? '50%' : '5px'};
+    border-radius: ${props => props.variant == 'rounded' ? '50%' : '0px'};
     transition: all .2s ease-in-out;
     cursor: pointer;
 
