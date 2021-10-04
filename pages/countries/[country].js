@@ -6,6 +6,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 import ToolBar from '@/components/ui/ToolBar';
 import CountryInfos from '@/components/containers/CountryInfos';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const Main = styled.main`
     margin: 20px;
@@ -26,13 +27,15 @@ function countries({ setIsDarkMode, isDarkMode }) {
         <Main>
             <Box keepDirection>
                 <ToolBar>
-                    <Button 
-                        startIcon={<BsArrowLeft size={18} />}
-                        variant="shaded"
-                        style={{ padding: '8px 25px'}}
-                    >
-                        Back
-                    </Button>
+                    <Link href="/">
+                        <Button 
+                            startIcon={<BsArrowLeft size={18} />}
+                            variant="shaded"
+                            style={{ padding: '8px 25px'}}
+                        >
+                            Back
+                        </Button>
+                    </Link>
                 </ToolBar>
                 <CountryInfos />
             </Box>
