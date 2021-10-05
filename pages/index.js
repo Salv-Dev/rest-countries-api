@@ -4,19 +4,21 @@ import Head from 'next/head';
 import SearchBox from '@/components/containers/SearchBox';
 import ContentBox from '@/components/containers/ContentBox';
 import api from './../src/utils/instanceApi';
+import filterByRegion from 'src/utils/filterByRegion';
+import Loading from '@/components/ui/Loading';
 
 const selectOptions = [
   "Africa",
-  "América",
+  "Americas",
   "Asia",
-  "Europa",
+  "Europe",
   "Oceania"
 ]
 
 const Home = ({ setIsDarkMode, isDarkMode }) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
 
@@ -35,6 +37,7 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
 
   const changeSelectedOption = (e) => {
     setSelectedOption(e.target.innerHTML);
+    setData((prev) => filterByRegion(prev, e.target.innerHTML));
   }
 
   useEffect(() => {
@@ -65,20 +68,29 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
-    <main>
-      <SearchBox 
-        inputRef={inputRef}
-        inputValue={inputValue}
-        selectedOption={selectedOption}
-        selectOptions={selectOptions}
-        changeInputTextValue={changeInputTextValue}
-        cleanInputTextValue={cleanInputTextValue}
-        changeSelectedOption={changeSelectedOption}
-        loading={loading}
-      />
-      <ContentBox data={data}/>
-    </main>
+    {data ? 
+      <>
+        <Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
+        <main>
+          <SearchBox 
+            inputRef={inputRef}
+            inputValue={inputValue}
+            selectedOption={selectedOption}
+            selectOptions={selectOptions}
+            changeInputTextValue={changeInputTextValue}
+            cleanInputTextValue={cleanInputTextValue}
+            changeSelectedOption={changeSelectedOption}
+            loading={loading}
+          />
+          <ContentBox data={data}/>
+        </main>
+      </>
+    :
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', height: '100vh', justifyContent: 'center', alignItems: 'center' }}>
+        <Loading />
+        <em>Carregando...</em>
+      </div>
+    }
   </div>
 )}
 

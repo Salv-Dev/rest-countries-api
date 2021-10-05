@@ -3,7 +3,7 @@ import Box from '@/components/ui/Box';
 import TextField from '@/components/ui/TextField';
 import Button from '@/components/ui/Button';
 import { IoMdSearch } from 'react-icons/io';
-import { LoadingIcon } from './styles';
+import Loading from '@/components/ui/Loading';
 
 function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputValue, selectedOption, selectOptions,  changeSelectedOption, loading }) {
   return (
@@ -15,7 +15,7 @@ function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputV
             </Button>
         }
         endAdornment={
-          loading && <LoadingIcon />
+          loading && <Loading />
         }
         ref={inputRef}
         placeholder="Search for a country..."
