@@ -2,9 +2,10 @@ import React from 'react';
 import Box from '@/components/ui/Box';
 import TextField from '@/components/ui/TextField';
 import Button from '@/components/ui/Button';
-import { IoMdSearch } from 'react-icons/io'
+import { IoMdSearch } from 'react-icons/io';
+import { LoadingIcon } from './styles';
 
-function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputValue, selectedOption, selectOptions,  changeSelectedOption}) {
+function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputValue, selectedOption, selectOptions,  changeSelectedOption, loading }) {
   return (
     <Box style={{ margin: '20px', gap: '10px' }}>
         <TextField 
@@ -12,6 +13,9 @@ function SearchBox({ inputRef, changeInputTextValue, cleanInputTextValue, inputV
             <Button dense >
             <IoMdSearch size={22}/>
             </Button>
+        }
+        endAdornment={
+          loading && <LoadingIcon />
         }
         ref={inputRef}
         placeholder="Search for a country..."
