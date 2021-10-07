@@ -9,6 +9,7 @@ export const Image = styled.img`
 
     @media(min-width: 1000px) {
         width: 500px;
+        min-width: 500px;
     }
 `;
 
@@ -26,12 +27,13 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
 
     @media(min-width: 600px) {
         flex-direction: row;
         flex-wrap: wrap;
     }
+
 `;
 
 export const Title = styled.h1`
@@ -42,6 +44,7 @@ export const Title = styled.h1`
 
 export const Paragraph = styled.p`
     margin-bottom: 5px;
+    word-wrap: break-word;
 `;
 
 export const Span = styled.span`

@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-function Card({ children, onClick }) {
+const Card = React.forwardRef(({ children, onClick, href }, ref) => {
   return (
-      <Container onClick={onClick}>
+      <Container onClick={onClick} href={href} ref={ref}>
           {children}
       </Container>
   );
-}
+})
 
 export default Card;

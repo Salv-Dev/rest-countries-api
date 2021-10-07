@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import Header from '@/components/containers/Header';
 import Head from 'next/head';
 import SearchBox from '@/components/containers/SearchBox';
@@ -24,6 +24,7 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
 
   const changeInputTextValue = (e) => {
     setInputValue(e.target.value);
+    setSelectedOption('');
     setTimeout(() => {
       setLoading(true);
     }, 2000);
@@ -32,6 +33,7 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
   const cleanInputTextValue = () => {
     setInputValue("");
     setLoading(true);
+    setSelectedOption('');
     inputRef.current.focus();  
   }
 
@@ -94,4 +96,4 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
   </div>
 )}
 
-export default Home
+export default Home;
