@@ -27,15 +27,14 @@ function countries({ setIsDarkMode, isDarkMode }) {
         <Main>
             <Box keepDirection>
                 <ToolBar>
-                    <Link href="/">
                         <Button 
                             startIcon={<BsArrowLeft size={18} />}
                             variant="shaded"
                             style={{ padding: '8px 25px'}}
+                            onClick={() => router.back()}
                         >
                             Back
                         </Button>
-                    </Link>
                 </ToolBar>
                 <CountryInfos />
             </Box>

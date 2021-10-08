@@ -15,23 +15,31 @@ const selectOptions = [
   "Oceania"
 ]
 
-const Home = ({ setIsDarkMode, isDarkMode }) => {
+const Home = ({ setIsDarkMode, isDarkMode, data, setData, initialData }) => {
   const [inputValue, setInputValue] = useState("");
   const [selectedOption, setSelectedOption] = useState('');
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
 
+  console.log(data);
+
   const changeInputTextValue = (e) => {
+    clearTimeout(inputTimeout);
     setInputValue(e.target.value);
     setSelectedOption('');
-    setTimeout(() => {
-      setLoading(true);
-    }, 2000);
+    console.log(e.target.value);
+    if(e.target.value == '') {
+      setData(initialData);
+    }else {
+      var inputTimeout = setTimeout(() => {
+        setLoading(true);
+      }, 1000);
+    }
   }
 
   const cleanInputTextValue = () => {
     setInputValue("");
+    setData(initialData);
     setLoading(true);
     setSelectedOption('');
     inputRef.current.focus();  
@@ -44,12 +52,8 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if(inputValue.length == 0) {
-        api.get('/all').then(r => {
-          setData(r.data);
-          setLoading(false);
-        });
-      } else {
+      setLoading(false);
+      if(inputValue.length > 0) {
         api.get(`/name/${inputValue}`).then(r => {
           setData(r.data);
           setLoading(false);
@@ -58,10 +62,10 @@ const Home = ({ setIsDarkMode, isDarkMode }) => {
           setLoading(false);
         })
       }
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timeout);
-  }, [inputValue, setData])
+  }, [inputValue])
 
   return (
   <div>
