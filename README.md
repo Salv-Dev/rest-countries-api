@@ -30,7 +30,7 @@
 ## Iniciando
 
 1. Clone este repositório usando `git clone git@github.com:Salv-Dev/rest-countries-api.git`
-2. Vá para o diretório: `cd rest-country-api`<br />
+2. Vá para o diretório: `cd rest-countries-api`<br />
 ### Iniciando o frontend
 
 1. Rode `npm i` para instalar as dependências.
